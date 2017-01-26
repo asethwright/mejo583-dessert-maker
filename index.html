@@ -14,20 +14,23 @@
 
       <div class="Holders">
 
-        <div class="Holder Holder--fruit">
-          <img v-if="currentFruit" v-bind:src="images.fruits[currentFruit]" />
+        <div class="Holder Holder--fruit" @mousemove="logger">
+          <img v-show="currentFruit" v-bind:src="images.fruits[currentFruit]" />
+          <p v-show="!currentFruit">Click a fruit to see an image</p>
         </div>
 
         <div class="separator">+</div>
 
         <div class="Holder Holder--dessert">
           <img v-if="currentDessert" v-bind:src="images.desserts[currentDessert]" />
+          <p v-else>Click a dessert to see an image</p>
         </div>
 
         <div class="separator">=</div>
 
         <div class="Holder Holder--result">
           <img v-if="currentDessert && currentFruit" v-bind:src="images.mixes[currentFruit][currentDessert]" />
+          <p v-else>Click a fruit and dessert to see an image</p>
         </div>
 
       </div>
@@ -37,15 +40,15 @@
         <div class="Fruit-selector">
           <h3>Fruit Ingredients</h3>
 
-          <div class="Fruit Fruit--apple">
+          <div class="Fruit Fruit--apple" v-on:click="setFruit('apple')">
             Apple
           </div>
 
-          <div class="Fruit Fruit--orange">
+          <div class="Fruit Fruit--orange" v-on:click="setFruit('orange')">
             Orange
           </div>
 
-          <div class="Fruit Fruit--banana">
+          <div class="Fruit Fruit--banana" v-on:click="setFruit('banana')">
             Banana
           </div>
         </div>
@@ -53,22 +56,22 @@
         <div class="Dessert-selector">
           <h3>Dessert Ingredients</h3>
 
-          <div class="Dessert Dessert--icecream">
+          <div class="Dessert Dessert--icecream" @click="setDessert('icecream')">
             Ice Cream
           </div>
 
-          <div class="Dessert Dessert--cake">
+          <div class="Dessert Dessert--cake" @click="setDessert('cake')">
             Cake
           </div>
 
-          <div class="Dessert Dessert--smoothie">
+          <div class="Dessert Dessert--pie" @click="setDessert('pie')">
             Pie
           </div>
         </div>
 
       </div>
 
-      <div class="Reset">
+      <div class="Reset" @click="reset">
         Reset
       </div>
 

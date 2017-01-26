@@ -5,6 +5,23 @@ var images = {
 
 var app = new Vue({
     el: '#container',
+    methods: {
+      setFruit: function (f) {
+        this.currentFruit = f;
+      },
+      setDessert: function (d) {
+        this.currentDessert = d;
+      },
+      // reset: function () {
+      reset () {
+        this.currentFruit = null;
+        this.currentDessert = null;
+      },
+      logger (e) {
+        console.log(e)
+        console.log('mouse moved!')
+      }
+    },
     data: {
       currentFruit: null,
       currentDessert: null,
